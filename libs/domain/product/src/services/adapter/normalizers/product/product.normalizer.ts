@@ -134,7 +134,7 @@ export function productVariantsNormalizer(
 ): Observable<Partial<Product>> {
   const variants = data.abstractProducts?.[0].concreteProducts;
 
-  if (!variants?.length) {
+  if (!variants?.length || variants.length < 2) {
     return of({});
   }
 
