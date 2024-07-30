@@ -8,10 +8,7 @@ export const productIncludes = provideIncludes(PRODUCT, [
   ApiProductModel.Includes.ConcreteProductAvailabilities,
   ApiProductModel.Includes.Labels,
   ApiProductModel.Includes.AbstractProducts,
-  {
-    include: ApiProductModel.Includes.ConcreteProducts,
-    fields: ['sku'],
-  },
+  ApiProductModel.Includes.ConcreteProducts,
   {
     include: ApiProductModel.Includes.CategoryNodes,
     fields: [
