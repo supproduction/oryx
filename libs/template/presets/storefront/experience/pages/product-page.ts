@@ -111,6 +111,20 @@ export const productPage: ExperienceComponent = {
           ],
         },
         {
+          type: 'oryx-product-variant-list',
+          options: {
+            heading: 'Variants',
+            rules: [
+              {
+                layout: { type: 'carousel' },
+                padding: '20 0',
+                colSpan: 2,
+              },
+            ],
+          },
+        },
+
+        {
           type: 'oryx-product-relations',
           options: {
             heading: 'Alternative Products',
@@ -124,19 +138,19 @@ export const productPage: ExperienceComponent = {
             ],
           },
         },
-        {
-          type: 'oryx-product-list',
-          options: {
-            heading: 'Related Products',
-            rules: [
-              {
-                layout: 'carousel',
-                padding: '20 0',
-                colSpan: 2,
-              },
-            ],
-          },
-        },
+        // {
+        //   type: 'oryx-product-list',
+        //   options: {
+        //     heading: 'Related Products',
+        //     rules: [
+        //       {
+        //         layout: 'carousel',
+        //         padding: '20 0',
+        //         colSpan: 2,
+        //       },
+        //     ],
+        //   },
+        // },
       ],
     },
     featureVersion >= '1.2' ? { ref: 'footer' } : {},

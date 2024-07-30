@@ -129,6 +129,18 @@ export function productCategoryNormalizer(
   return transformer.transform(node, CategoryNormalizer);
 }
 
+export function productVariantsNormalizer(
+  data: DeserializedProduct
+): Observable<Partial<Product>> {
+  const variants = data.abstractProducts?.[0].concreteProducts;
+
+  if (!variants?.length) {
+    return of({});
+  }
+
+  return of({ variants: variants.map((variant) => ({ sku: variant.sku! })) });
+}
+
 export const productNormalizer: Provider[] = [
   {
     provide: ProductNormalizer,
@@ -161,6 +173,10 @@ export const productNormalizer: Provider[] = [
   {
     provide: ProductNormalizer,
     useValue: productCategoryNormalizer,
+  },
+  {
+    provide: ProductNormalizer,
+    useValue: productVariantsNormalizer,
   },
 ];
 

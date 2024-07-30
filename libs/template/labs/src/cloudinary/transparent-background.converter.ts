@@ -14,7 +14,7 @@ import { Size } from '@oryx-frontend/utilities';
  */
 const fetchUrl = `https://res.cloudinary.com/${
   (<any>import.meta).env?.ORYX_CLOUDINARY_ID
-}/image/fetch/`;
+}/image/fetch`;
 
 /**
  * Simple product image convertor that takes the large product image and assigns it to different image formats.

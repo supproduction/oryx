@@ -9,6 +9,10 @@ export const productIncludes = provideIncludes(PRODUCT, [
   ApiProductModel.Includes.Labels,
   ApiProductModel.Includes.AbstractProducts,
   {
+    include: ApiProductModel.Includes.ConcreteProducts,
+    fields: ['sku'],
+  },
+  {
     include: ApiProductModel.Includes.CategoryNodes,
     fields: [
       ApiProductModel.CategoryNodeFields.MetaDescription,
