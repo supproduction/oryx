@@ -1,6 +1,7 @@
 import { resolve } from '@oryx-frontend/di';
 import { LayoutMixin } from '@oryx-frontend/experience';
 import {
+  PRODUCT,
   ProductListPageService,
   ProductListService,
   ProductMixin,
@@ -9,7 +10,7 @@ import { hydrate } from '@oryx-frontend/utilities';
 import { LitElement, TemplateResult, html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js';
 
-@hydrate()
+@hydrate({ context: PRODUCT })
 export class ProductVariantListComponent extends ProductMixin(
   LayoutMixin(LitElement)
 ) {
