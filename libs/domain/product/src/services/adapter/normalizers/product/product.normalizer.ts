@@ -24,7 +24,9 @@ export function productAttributeNormalizer(
     reviewCount,
     attributes,
     attributeNames,
+    abstractProducts,
   } = data;
+  const variants = abstractProducts?.[0].concreteProducts;
 
   return {
     sku,
@@ -34,6 +36,7 @@ export function productAttributeNormalizer(
     reviewCount,
     attributes,
     attributeNames,
+    variants: variants?.length ? variants.map((variant) => ({ sku: variant.sku! })) : undefined,
   };
 }
 
@@ -129,18 +132,6 @@ export function productCategoryNormalizer(
   return transformer.transform(node, CategoryNormalizer);
 }
 
-export function productVariantsNormalizer(
-  data: DeserializedProduct
-): Observable<Partial<Product>> {
-  const variants = data.abstractProducts?.[0].concreteProducts;
-
-  if (!variants?.length || variants.length < 2) {
-    return of({});
-  }
-
-  return of({ variants: variants.map((variant) => ({ sku: variant.sku! })) });
-}
-
 export const productNormalizer: Provider[] = [
   {
     provide: ProductNormalizer,
@@ -173,10 +164,6 @@ export const productNormalizer: Provider[] = [
   {
     provide: ProductNormalizer,
     useValue: productCategoryNormalizer,
-  },
-  {
-    provide: ProductNormalizer,
-    useValue: productVariantsNormalizer,
   },
 ];
 

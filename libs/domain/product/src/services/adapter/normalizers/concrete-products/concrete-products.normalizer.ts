@@ -20,10 +20,17 @@ export function concreteProductsNormalizer(
   return combineLatest(
     data
       .filter((abstract) => abstract[concreteProductsKey]?.length)
-      .map((abstract) =>
-        combineLatest([
+      .map((abstract) => {
+        const concretes = abstract[concreteProductsKey];
+        const concrete = abstract[concreteProductsKey][0];
+
+        if (concrete.abstractProducts) {
+          concrete.abstractProducts[0][concreteProductsKey] = concretes;
+        }
+
+        return combineLatest([
           transformer.transform(
-            abstract[concreteProductsKey]?.[0],
+            concrete,
             ProductNormalizer
           ),
           transformer.transform(abstract[categoryKey], CategoryIdNormalizer),
@@ -33,7 +40,7 @@ export function concreteProductsNormalizer(
             ...nodeId,
           }))
         )
-      )
+      })
   );
 }
 
