@@ -1,3 +1,4 @@
+export * from './article.model';
 export * from './content.model';
 
 /**

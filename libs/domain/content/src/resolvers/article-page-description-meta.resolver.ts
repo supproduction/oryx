@@ -1,9 +1,4 @@
 import {
-  ContentContext,
-  ContentQualifier,
-  ContentService,
-} from '@oryx-frontend/content';
-import {
   ContextService,
   ElementResolver,
   PageMetaResolver,
@@ -11,13 +6,14 @@ import {
 import { inject } from '@oryx-frontend/di';
 import { RouterService } from '@oryx-frontend/router';
 import { Observable, combineLatest, map, of, switchMap } from 'rxjs';
-import { ArticleContent } from '../article.model';
+import { ArticleContent, ContentQualifier } from '../models';
+import { ContentContext, ContentService } from '../services';
 
-export class ArticlePageTitleMetaResolver implements PageMetaResolver {
+export class ArticlePageDescriptionMetaResolver implements PageMetaResolver {
   constructor(
     protected context = inject(ContextService),
-    protected router = inject(RouterService),
-    protected content = inject(ContentService)
+    protected content = inject(ContentService),
+    protected router = inject(RouterService)
   ) {}
 
   getScore(): Observable<unknown[]> {
@@ -47,7 +43,9 @@ export class ArticlePageTitleMetaResolver implements PageMetaResolver {
               entities: [type],
             })
             .pipe(
-              map((data) => (data?.heading ? { title: data.heading } : {}))
+              map((data) =>
+                data?.description ? { description: data.description } : {}
+              )
             );
         })
       );
