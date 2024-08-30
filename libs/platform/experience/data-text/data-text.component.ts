@@ -20,7 +20,7 @@ export class DataTextComponent extends TextMixin(
 
   protected $data = computed<string | undefined>(() => {
     const { entity: type, field } = this.$options();
-    console.log(type, field);
+
     return this.entityService
       .getField<string>({ element: this, type, field })
       .pipe(catchError(() => of()));
