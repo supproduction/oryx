@@ -36,21 +36,31 @@ const legalLinks: ExperienceComponent = {
         data: { text: `©️ ${new Date().getFullYear()} Spryker` },
       },
     },
-    {
-      type: 'oryx-content-list',
-      options: {
-        tags: 'legal',
-        rules: [
+    ...(featureVersion >= '1.5'
+      ? [
           {
-            layout: {
-              type: 'flex',
-              divider: true,
+            type: 'oryx-content-list',
+            options: {
+              tags: 'legal',
+              rules: [
+                {
+                  layout: {
+                    type: 'flex',
+                    divider: true,
+                  },
+                  width: 'auto',
+                },
+              ],
             },
-            width: 'auto',
           },
-        ],
-      },
-    },
+        ]
+      : [
+          link('Imprint', '/faq/imprint'),
+          link('Terms & conditions', '/article/terms-and-conditions'),
+          link('Privacy Notice', '/article/privacy'),
+          link('Data preference'),
+          link('Condition of use'),
+        ]),
   ],
   options: {
     rules: [
