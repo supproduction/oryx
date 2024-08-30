@@ -39,7 +39,7 @@ export class ContentLinkComponent extends ContentMixin<
     if (url) return of(url);
     if (type)
       return this.semanticLinkService.get({
-        type: type,
+        type,
         id,
         qualifier,
         params,

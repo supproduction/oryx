@@ -40,7 +40,7 @@ export const cmsProviders: Provider[] = [
   ...cmsTypes.map((type) =>
     provideEntity<Content | null | undefined, ContentQualifier>(type, {
       service: ContentService,
-      context: type,
+      context: 'content',
       get: (service, qualifier) =>
         (service as ContentService).get({ ...qualifier, type }),
     })

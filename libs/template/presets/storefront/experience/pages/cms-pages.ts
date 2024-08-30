@@ -1,14 +1,14 @@
 import { cmsTypes } from '@oryx-frontend/content';
 import { ExperienceComponent } from '@oryx-frontend/experience';
 
-export const cmsPages: ExperienceComponent[] = cmsTypes.map((type) => [
-  {
+export const cmsPages: ExperienceComponent[] = cmsTypes.map((type) =>
+  ({
     type: 'Page',
     id: type,
     meta: {
       title: type,
       route: `/${type}/:id`,
-      routeType: 'content',
+      routeType: type,
     },
     components: [
       { ref: 'header' },
@@ -22,7 +22,6 @@ export const cmsPages: ExperienceComponent[] = cmsTypes.map((type) => [
             type: 'oryx-site-breadcrumb',
             options: { rules: [{ colSpan: 2 }] },
           },
-
           {
             type: 'oryx-data-text',
             options: {
@@ -33,5 +32,5 @@ export const cmsPages: ExperienceComponent[] = cmsTypes.map((type) => [
       },
       { ref: 'footer' },
     ],
-  },
-]);
+  }),
+);

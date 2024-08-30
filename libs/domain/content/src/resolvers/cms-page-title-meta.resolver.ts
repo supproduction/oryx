@@ -5,7 +5,7 @@ import {
 } from '@oryx-frontend/core';
 import { inject } from '@oryx-frontend/di';
 import { RouterService } from '@oryx-frontend/router';
-import { Observable, combineLatest, map, of, switchMap } from 'rxjs';
+import { combineLatest, map, Observable, of, switchMap } from 'rxjs';
 import { CmsContent, ContentQualifier } from '../models';
 import { ContentContext, ContentService } from '../services';
 
@@ -22,7 +22,7 @@ export class CmsPageTitleMetaResolver implements PageMetaResolver {
       combineLatest([
         this.context.get(null, ContentContext.Content),
         this.router.currentRoute(),
-      ]).pipe(map(([type, route]) => route.includes(`/${type}/`))),
+      ]).pipe(map(([qualifier, route]) => route.includes(`/${qualifier?.type}/${qualifier?.id}`))),
     ]);
   }
 
