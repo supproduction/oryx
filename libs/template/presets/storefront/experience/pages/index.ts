@@ -10,4 +10,3 @@ export * from './order-confirmation-page';
 export * from './product-page';
 export * from './registration-page';
 export * from './search-page';
-

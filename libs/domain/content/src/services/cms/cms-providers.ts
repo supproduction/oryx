@@ -1,7 +1,10 @@
 import { PageMetaResolver, provideEntity } from '@oryx-frontend/core';
 import { Provider } from '@oryx-frontend/di';
-import { cmsTypes, Content, ContentQualifier } from '../../models';
-import { CmsPageDescriptionMetaResolver, CmsPageTitleMetaResolver } from '../../resolvers';
+import { Content, ContentQualifier, cmsTypes } from '../../models';
+import {
+  CmsPageDescriptionMetaResolver,
+  CmsPageTitleMetaResolver,
+} from '../../resolvers';
 import { ContentConfig } from '../adapter';
 import { ContentService } from '../content.service';
 import { CmsQualifierContextFallback } from './cms-context';

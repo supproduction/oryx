@@ -22,7 +22,11 @@ export class CmsPageDescriptionMetaResolver implements PageMetaResolver {
       combineLatest([
         this.context.get(null, ContentContext.Content),
         this.router.currentRoute(),
-      ]).pipe(map(([qualifier, route]) => route.includes(`/${qualifier?.type}/${qualifier?.id}`))),
+      ]).pipe(
+        map(([qualifier, route]) =>
+          route.includes(`/${qualifier?.type}/${qualifier?.id}`)
+        )
+      ),
     ]);
   }
 

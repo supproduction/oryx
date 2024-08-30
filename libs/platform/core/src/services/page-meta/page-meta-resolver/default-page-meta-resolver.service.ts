@@ -35,12 +35,15 @@ export class DefaultPageMetaResolverService implements PageMetaResolverService {
         ])
       )
     ).pipe(
-      map((data) => data
-          .filter(([score, data]) => score !== ResolverScore.NotUsed && Object.keys(data).length)
+      map((data) =>
+        data
+          .filter(
+            ([score, data]) =>
+              score !== ResolverScore.NotUsed && Object.keys(data).length
+          )
           .sort(([aScore], [bScore]) => aScore - bScore)
           .reduce((acc, [_, elements]) => ({ ...acc, ...elements }), {})
-        ),
-
+      )
     )
   ).pipe(shareReplay({ bufferSize: 1, refCount: true }));
   protected newData$ = this.data$.pipe(
