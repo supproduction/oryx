@@ -29,44 +29,29 @@ const legalLinks: ExperienceComponent = {
   type: 'oryx-composition',
   name: 'legal links',
   id: 'legal-links',
-  components:
-    featureVersion >= '1.5'
-      ? [
+  components: [
+    {
+      type: 'oryx-content-text',
+      content: {
+        data: { text: `©️ ${new Date().getFullYear()} Spryker` },
+      },
+    },
+    {
+      type: 'oryx-content-list',
+      options: {
+        tags: 'legal',
+        rules: [
           {
-            type: 'oryx-content-text',
-            content: {
-              data: { text: `©️ ${new Date().getFullYear()} Spryker` },
+            layout: {
+              type: 'flex',
+              divider: true,
             },
+            width: 'auto',
           },
-          {
-            type: 'oryx-content-list',
-            options: {
-              tags: 'legal',
-              rules: [
-                {
-                  layout: {
-                    type: 'flex',
-                    divider: true,
-                  },
-                  width: 'auto',
-                },
-              ],
-            },
-          },
-        ]
-      : [
-          {
-            type: 'oryx-content-text',
-            content: {
-              data: { text: `©️ ${new Date().getFullYear()} Spryker` },
-            },
-          },
-          link('Imprint', '/faq/imprint'),
-          link('Terms & conditions', '/article/terms-and-conditions'),
-          link('Privacy Notice', '/article/privacy'),
-          link('Data preference'),
-          link('Condition of use'),
         ],
+      },
+    },
+  ],
   options: {
     rules: [
       {

@@ -1,9 +1,6 @@
 declare global {
   interface ContentFields {
     component: undefined;
-    article: undefined;
-    faq: undefined;
-    about: undefined;
   }
 }
 

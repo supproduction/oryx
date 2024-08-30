@@ -1,4 +1,4 @@
-export * from './article.model';
+export * from './cms.model';
 export * from './content.model';
 
 /**

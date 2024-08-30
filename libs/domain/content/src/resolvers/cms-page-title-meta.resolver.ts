@@ -6,14 +6,14 @@ import {
 import { inject } from '@oryx-frontend/di';
 import { RouterService } from '@oryx-frontend/router';
 import { Observable, combineLatest, map, of, switchMap } from 'rxjs';
-import { ArticleContent, ContentQualifier } from '../models';
+import { CmsContent, ContentQualifier } from '../models';
 import { ContentContext, ContentService } from '../services';
 
-export class ArticlePageDescriptionMetaResolver implements PageMetaResolver {
+export class CmsPageTitleMetaResolver implements PageMetaResolver {
   constructor(
     protected context = inject(ContextService),
-    protected content = inject(ContentService),
-    protected router = inject(RouterService)
+    protected router = inject(RouterService),
+    protected content = inject(ContentService)
   ) {}
 
   getScore(): Observable<unknown[]> {
@@ -37,15 +37,13 @@ export class ArticlePageDescriptionMetaResolver implements PageMetaResolver {
           if (!id || !type) return of({});
 
           return this.content
-            .get<ArticleContent>({
+            .get<CmsContent>({
               id,
               type,
               entities: [type],
             })
             .pipe(
-              map((data) =>
-                data?.description ? { description: data.description } : {}
-              )
+              map((data) => (data?.heading ? { title: data.heading } : {}))
             );
         })
       );

@@ -2,9 +2,9 @@ import { ContextFallback } from '@oryx-frontend/core';
 import { inject, Provider } from '@oryx-frontend/di';
 import { RouterService } from '@oryx-frontend/router';
 import { combineLatest, map } from 'rxjs';
-import { ContentContext } from './content-context';
+import { ContentContext } from '../content-context';
 
-export const ArticleQualifierContextFallback: Provider = {
+export const CmsQualifierContextFallback: Provider = {
   provide: `${ContextFallback}${ContentContext.Content}`,
   useFactory: () =>
     combineLatest([

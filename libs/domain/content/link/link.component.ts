@@ -35,6 +35,7 @@ export class ContentLinkComponent extends ContentMixin<
 
   protected $link = computed(() => {
     const { url, type, id, qualifier, params } = this.$options();
+
     if (url) return of(url);
     if (type)
       return this.semanticLinkService.get({
