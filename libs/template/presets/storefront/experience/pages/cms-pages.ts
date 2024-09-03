@@ -1,7 +1,7 @@
 import { cmsTypes } from '@oryx-frontend/content';
 import { ExperienceComponent } from '@oryx-frontend/experience';
 
-export const cmsPages: ExperienceComponent[] = cmsTypes.map((type) => ({
+export const cmsPage: ExperienceComponent[] = cmsTypes.map((type) => ({
   type: 'Page',
   id: type,
   meta: {
