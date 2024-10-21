@@ -9,7 +9,7 @@ import {
   oauthHandlerComponent,
 } from '@oryx-frontend/auth';
 import { AuthLoginStrategy } from '@oryx-frontend/auth/login';
-import { AppFeature, AppPlugin } from '@oryx-frontend/core';
+import { AppFeature, AppPlugin, injectEnv } from '@oryx-frontend/core';
 import { Provider } from '@oryx-frontend/di';
 import { provideLitRoutes } from '@oryx-frontend/router/lit';
 import { ComponentsInfo } from '@oryx-frontend/utilities';
@@ -78,7 +78,10 @@ export class BapiAuthFeature extends OauthFeature implements AppFeature {
         provide: CodeGrantAuthLoginStrategyConfig,
         useFactory: () =>
           ({
-            loginUrl: urlJoin('', '/authorize'),
+            loginUrl: urlJoin(
+              injectEnv('ORYX_BAPI_BACKEND_URL') ?? '',
+              '/authorize'
+            ),
           } as CodeGrantAuthLoginStrategyConfig),
       },
     ];
