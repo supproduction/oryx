@@ -79,7 +79,7 @@ export class BapiAuthFeature extends OauthFeature implements AppFeature {
         useFactory: () =>
           ({
             loginUrl: urlJoin(
-              injectEnv('ORYX_FULFILLMENT_BACKEND_URL') ?? '',
+              injectEnv('ORYX_BAPI_BACKEND_URL') ?? '',
               '/authorize'
             ),
           } as CodeGrantAuthLoginStrategyConfig),
